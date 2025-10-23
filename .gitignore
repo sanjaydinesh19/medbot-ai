@@ -10,3 +10,5 @@ data/
 # VSCode
 .vscode/
 
+# Frontend
+frontend/medbot-ui/node_modules/
