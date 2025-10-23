@@ -7,6 +7,12 @@ import io
 import torch
 import torch.nn as nn
 from torchvision import models, transforms
+from fastapi.responses import FileResponse
+from model.gradcam_utils import generate_gradcam
+import cv2
+import numpy as np
+import tempfile
+import os
 
 app = FastAPI(title="MedBot")
 
@@ -83,10 +89,31 @@ async def predict(file: UploadFile = File(...)):
     except Exception as e:
         return JSONResponse({"error": str(e)}, status_code=500)
 
-@app.get("/explain")
-def explain_info():
-    return {
-        "message": "Grad-CAM endpoint placeholder",
-        "status": "ready for Phase 2"
-    }
+@app.post("/gradcam")
+async def gradcam(file: UploadFile = File(...)):
+    """
+    Returns a Grad-CAM heatmap image showing where the model focused.
+    """
+    try:
+        contents = await file.read()
+        image = Image.open(io.BytesIO(contents)).convert("RGB")
+        img_tensor = transform(image).unsqueeze(0).to(DEVICE) #type:ignore
 
+        # Pick target conv layer (last features block of DenseNet)
+        target_layer = model.features[-1]
+
+        heatmap = generate_gradcam(model, img_tensor, target_layer, DEVICE)
+
+        # Blend heatmap with original image
+        img_cv = np.array(image.resize((224, 224)))[:, :, ::-1]  # RGB→BGR
+        heatmap_color = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET) #type:ignore
+        overlay = cv2.addWeighted(img_cv, 0.6, heatmap_color, 0.4, 0)
+
+        # Save temporary image
+        tmp_path = os.path.join(tempfile.gettempdir(), "gradcam_result.png")
+        cv2.imwrite(tmp_path, overlay)
+
+        return FileResponse(tmp_path, media_type="image/png", filename="gradcam_result.png")
+
+    except Exception as e:
+        return JSONResponse({"error": str(e)}, status_code=500)
