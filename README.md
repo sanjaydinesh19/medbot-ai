@@ -16,8 +16,8 @@ Users can upload images through a simple web interface and receive instant predi
 - GPU acceleration (CUDA)  
 - Modular backend for future Grad-CAM visualizations  
 
-## 🧠 Project Structure
-```
+## Project Structure
+```bash
 medbot-ai/
 ├── backend/ # FastAPI backend (AI inference)
 ├── frontend/ # React upload UI
@@ -25,3 +25,9 @@ medbot-ai/
 ├── data/ # (ignored, local only)
 └── notebooks/ # Utilities and experiments
 ```
+
+## Future Enhancements
+- Grad-CAM heatmaps for visual explainability
+- Comparative model dashboard
+- AWS EC2 + S3 deployment
+- Automated CI/CD with GitHub Actions
