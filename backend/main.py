@@ -43,18 +43,37 @@ def read_root():
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     try:
-        # Read image
+        # Read and Preprocess Image
         contents = await file.read()
         image = Image.open(io.BytesIO(contents)).convert("RGB")
-
-        # Preprocess
         img_tensor = transform(image).unsqueeze(0).to(DEVICE) #type:ignore
 
-        # Inference
+        # Run Inference
         with torch.no_grad():
             output = model(img_tensor)
             probability = torch.sigmoid(output).item()
             prediction = "Pneumonia Detected" if probability >= 0.5 else "Normal"
+
+        # Log Results
+        import csv, datetime, os
+        os.makedirs("logs", exist_ok=True)
+        log_file = "logs/predictions_log.csv"
+        log_fields = ["timestamp", "filename", "prediction", "confidence", "device"]
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        # Append if file exists, else create with header
+        write_header = not os.path.exists(log_file)
+        with open(log_file, "a", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=log_fields)
+            if write_header:
+                writer.writeheader()
+            writer.writerow({
+                "timestamp": timestamp,
+                "filename": file.filename,
+                "prediction": prediction,
+                "confidence": round(probability, 4),
+                "device": DEVICE.type
+            })
 
         return JSONResponse({
             "prediction": prediction,
@@ -63,3 +82,11 @@ async def predict(file: UploadFile = File(...)):
 
     except Exception as e:
         return JSONResponse({"error": str(e)}, status_code=500)
+
+@app.get("/explain")
+def explain_info():
+    return {
+        "message": "Grad-CAM endpoint placeholder",
+        "status": "ready for Phase 2"
+    }
+

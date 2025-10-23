@@ -59,7 +59,27 @@ function App() {
         <div style={{ marginTop: "20px" }}>
           <h2>Result:</h2>
           <p><strong>Prediction:</strong> {response.prediction}</p>
-          <p><strong>Confidence:</strong> {response.confidence}</p>
+          <p><strong>Confidence:</strong> {(response.confidence * 100).toFixed(2)}%</p>
+
+          <div
+            style={{
+              width: "300px",
+              height: "20px",
+              backgroundColor: "#eee",
+              borderRadius: "10px",
+              margin: "10px auto"
+            }}
+          >
+            <div
+              style={{
+                height: "100%",
+                width: `${Math.min(response.confidence * 100, 100)}%`,
+                backgroundColor: response.prediction.includes("Pneumonia") ? "#e74c3c" : "#2ecc71",
+                borderRadius: "10px",
+                transition: "width 0.5s ease"
+              }}
+            ></div>
+          </div>
         </div>
       )}
     </div>
