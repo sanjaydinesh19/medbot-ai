@@ -1,4 +1,4 @@
-# Python
+# Python / Virtual Environment
 __pycache__/
 *.pyc
 .venv/
@@ -6,9 +6,12 @@ __pycache__/
 
 # Data and models
 data/
+model/model_weights/
+*.pt
 
-# VSCode
+# Node modules
+frontend/**/node_modules/
+frontend/**/build/
+
+# VS Code
 .vscode/
-
-# Frontend
-frontend/medbot-ui/node_modules/
