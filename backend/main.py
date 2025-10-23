@@ -35,6 +35,6 @@ async def predict(file: UploadFile = File(...)):
     
     #For now, return a dummy prediction
     return JSONResponse({
-        "prediction": "normal",
+        "prediction": "Normal",
         "confidence":0.51
     })
