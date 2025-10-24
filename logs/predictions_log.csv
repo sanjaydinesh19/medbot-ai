@@ -1,0 +1,14 @@
+timestamp,filename,prediction,confidence,device
+2025-10-24 17:46:02,0004cfab-14fd-4e49-80ba-63a80b6bddd6.jpg,Normal,0.0338,cuda
+2025-10-24 17:46:08,0004cfab-14fd-4e49-80ba-63a80b6bddd6.jpg,Normal,0.0338,cuda
+2025-10-24 17:46:12,0022995a-45eb-4cfa-9a59-cd15f5196c64.jpg,Normal,0.0083,cuda
+2025-10-24 17:46:19,01538c3b-3de9-4fbb-95a8-732235821bbf.jpg,Normal,0.0118,cuda
+2025-10-24 17:46:24,00aecb01-a116-45a2-956c-08d2fa55433f.jpg,Pneumonia Detected,0.795,cuda
+2025-10-24 17:46:38,0aa43663-a1f3-44cb-8ecc-9b36fbb0d778.jpg,Pneumonia Detected,0.982,cuda
+2025-10-24 17:46:50,00a05408-8291-4231-886e-13763e103161.jpg,Pneumonia Detected,0.9688,cuda
+2025-10-24 17:50:29,0004cfab-14fd-4e49-80ba-63a80b6bddd6.jpg,Normal,0.0338,cuda
+2025-10-24 17:50:49,0025d2de-bd78-4d36-9f72-e15a5e22ca82.jpg,Normal,0.0543,cuda
+2025-10-24 17:50:54,0022073f-cec8-42ec-ab5f-bc2314649235.jpg,Pneumonia Detected,0.9656,cuda
+2025-10-24 17:56:18,000db696-cf54-4385-b10b-6b16fbb3f985.jpg,Pneumonia Detected,0.9513,cuda
+2025-10-24 18:05:39,000db696-cf54-4385-b10b-6b16fbb3f985.jpg,Pneumonia Detected,0.9513,cuda
+2025-10-24 18:10:06,000db696-cf54-4385-b10b-6b16fbb3f985.jpg,Pneumonia Detected,0.9513,cuda
