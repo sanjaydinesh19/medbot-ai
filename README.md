@@ -14,7 +14,8 @@ Users can upload images through a simple web interface and receive instant predi
 - Real-time pneumonia detection  
 - Confidence scores  
 - GPU acceleration (CUDA)  
-- Modular backend for future Grad-CAM visualizations  
+- Modular backend for future Grad-CAM visualizations
+- Grad-CAM heatmaps for visual explainability
 
 ## Project Structure
 ```bash
@@ -27,7 +28,6 @@ medbot-ai/
 ```
 
 ## Future Enhancements
-- Grad-CAM heatmaps for visual explainability
 - Comparative model dashboard
 - AWS EC2 + S3 deployment
 - Automated CI/CD with GitHub Actions
