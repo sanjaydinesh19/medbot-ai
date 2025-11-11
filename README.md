@@ -27,7 +27,7 @@ medbot-ai/
 ├── notebooks/             # Training, evaluation, visualization notebooks
 ├── data/                  # (local only, ignored in repo)
 └── README.md
-
+```
 
 ## Model Overview
 
