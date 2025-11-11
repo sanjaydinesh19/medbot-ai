@@ -83,6 +83,29 @@ After establishing DenseNet121 as the superior baseline, we introduced a novel h
 *(Plots generated using Matplotlib; see `/notebooks/visualizations.ipynb`)*
 
 ---
+## 🖥️ User Interface
+
+MedBot AI provides a simple, intuitive web interface built using React.js and FastAPI.
+
+### Pneumonia Detected
+Upload an X-ray image and click **"Detect Pneumonia"**.
+
+![Detected](frontend/medbot-ui/public/detected.png)
+
+---
+
+### Pneumonia not Detected
+Once an image is uploaded, the backend (FastAPI + PyTorch) processes it and returns the prediction with a **confidence score**.
+
+![Not Detected](frontend/medbot-ui/public/notDetected.png)
+
+---
+
+### Grad-CAM Visualization
+The system generates a **Grad-CAM heatmap** highlighting pneumonia regions for explainability.
+
+![Grad-CAM Visualization](frontend/medbot-ui/public/heatmap.png)
+---
 ## Conclusion
 
 The experiments conclusively show that:
