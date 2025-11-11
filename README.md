@@ -41,7 +41,7 @@ Three backbone models were compared under identical training conditions (3 epoch
 | EfficientNetB0 | 0.750 | 0.740 | 0.8364 | 0.5169 | 52.67 |
 
 **Result:** 
-“DenseNet121 outperformed both ResNet50 and EfficientNetB0 in terms of *accuracy* and *AUC*, making it the most effective baseline model for pneumonia detection.“
+> “DenseNet121 outperformed both ResNet50 and EfficientNetB0 in terms of *accuracy* and *AUC*, making it the most effective baseline model for pneumonia detection.“
 ---
 
 ## DensePneumo-ACE: Model Extension
